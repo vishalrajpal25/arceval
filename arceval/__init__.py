@@ -18,10 +18,20 @@ from arceval.core.trace_model import Trace, create_trace
 from arceval.backends.file import FileBackend
 from arceval.scorers.builtin.latency import LatencyScorer
 from arceval.scorers.builtin.error_rate import ErrorRateScorer
+from arceval.scorers.builtin.schema import SchemaScorer
+from arceval.scorers.builtin.availability import AvailabilityScorer
+from arceval.scorers.builtin.completeness import CompletenessScorer
+from arceval.scorers.builtin.freshness import FreshnessScorer
+from arceval.scorers.builtin.token_usage import TokenUsageScorer
 
 default_registry.register_backend("file", FileBackend)
 default_registry.register_scorer("builtin.latency", LatencyScorer)
 default_registry.register_scorer("builtin.error_rate", ErrorRateScorer)
+default_registry.register_scorer("builtin.schema", SchemaScorer)
+default_registry.register_scorer("builtin.availability", AvailabilityScorer)
+default_registry.register_scorer("builtin.completeness", CompletenessScorer)
+default_registry.register_scorer("builtin.freshness", FreshnessScorer)
+default_registry.register_scorer("builtin.token_usage", TokenUsageScorer)
 
 __all__ = [
     "ArcEvalConfig",

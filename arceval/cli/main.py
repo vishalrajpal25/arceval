@@ -3,6 +3,7 @@
 import click
 
 from arceval.cli.validate_cmd import validate
+from arceval.cli.test_cmd import test
 
 
 @click.group()
@@ -12,3 +13,4 @@ def cli() -> None:
 
 
 cli.add_command(validate)
+cli.add_command(test)
