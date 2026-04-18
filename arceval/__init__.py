@@ -42,6 +42,26 @@ default_registry.register_scorer("builtin.completeness", CompletenessScorer)
 default_registry.register_scorer("builtin.freshness", FreshnessScorer)
 default_registry.register_scorer("builtin.token_usage", TokenUsageScorer)
 
+from arceval.scorers.adapters.deepeval import DeepEvalAdapter
+from arceval.scorers.adapters.ragas import RAGASAdapter
+from arceval.scorers.adapters.mlflow_scorers import MLflowScorerAdapter
+from arceval.scorers.adapters.custom import CustomScorer
+
+default_registry.register_scorer("deepeval.correctness", DeepEvalAdapter)
+default_registry.register_scorer("deepeval.hallucination", DeepEvalAdapter)
+default_registry.register_scorer("deepeval.faithfulness", DeepEvalAdapter)
+default_registry.register_scorer("deepeval.tool_correctness", DeepEvalAdapter)
+default_registry.register_scorer("deepeval.task_completion", DeepEvalAdapter)
+default_registry.register_scorer("ragas.faithfulness", RAGASAdapter)
+default_registry.register_scorer("ragas.answer_relevancy", RAGASAdapter)
+default_registry.register_scorer("ragas.context_precision", RAGASAdapter)
+default_registry.register_scorer("ragas.context_recall", RAGASAdapter)
+default_registry.register_scorer("mlflow.correctness", MLflowScorerAdapter)
+default_registry.register_scorer("mlflow.safety", MLflowScorerAdapter)
+default_registry.register_scorer("mlflow.conversation_completeness", MLflowScorerAdapter)
+default_registry.register_scorer("mlflow.user_frustration", MLflowScorerAdapter)
+default_registry.register_scorer("custom", CustomScorer)
+
 __all__ = [
     "ArcEvalConfig",
     "AlertSink",
