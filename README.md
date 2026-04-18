@@ -190,12 +190,12 @@ arceval validate --config examples/quickstart/arceval.yaml
 ## Roadmap
 
 - [x] **Phase 1: Core** -- Protocols, config, registry, file backend, latency/error_rate scorers, CLI validate
-- [ ] **Phase 2: Testing Mode** -- Golden sets, test runner, CI/CD gates, `arceval test`
-- [ ] **Phase 3: Monitoring Mode** -- Sampling, continuous scoring, alerts, `arceval monitor`
-- [ ] **Phase 4: Backend Adapters** -- MLflow, Langfuse, OTEL, Delta
-- [ ] **Phase 5: Scorer Adapters** -- DeepEval, RAGAS, MLflow scorers
-- [ ] **Phase 6: Capture Middleware** -- MCP, FastAPI, LangChain, OpenAI
-- [ ] **Phase 7: Polish** -- Regression detection, drift detection, pytest plugin, init command
+- [x] **Phase 2: Testing Mode** -- Golden sets, test runner, CI/CD gates, `arceval test`
+- [x] **Phase 3: Monitoring Mode** -- Sampling, continuous scoring, alerts, `arceval monitor`
+- [x] **Phase 4: Backend Adapters** -- MLflow, Langfuse, OTEL, Delta
+- [x] **Phase 5: Scorer Adapters** -- DeepEval, RAGAS, MLflow scorers, custom callable
+- [x] **Phase 6: Capture Middleware** -- MCP, FastAPI, LangChain, OpenAI
+- [x] **Phase 7: Polish** -- Regression detection, drift detection, pytest plugin, `arceval init`, `arceval report`
 
 ## License
 
