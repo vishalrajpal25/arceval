@@ -12,3 +12,5 @@ build/
 htmlcov/
 traces/
 eval-reports/
+.DS_Store
+schemas/
