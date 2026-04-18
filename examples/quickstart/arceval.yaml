@@ -1,0 +1,51 @@
+version: "1"
+project: "quickstart-demo"
+
+endpoint:
+  type: http
+  name: "Demo HTTP Endpoint"
+
+backends:
+  dev:
+    type: file
+    path: "./traces/"
+    format: jsonl
+
+tiers:
+  t1:
+    name: "Must-Have"
+    description: "Instrument on day one. Rule-based."
+    mode: always
+    in_testing: true
+    in_monitoring: true
+    sample_rate: 1.0
+    block_deploy: true
+  t2:
+    name: "Operational"
+    description: "Requires golden sets."
+    mode: on_golden_set
+    in_testing: true
+    in_monitoring: true
+    sample_rate: 1.0
+    block_deploy: false
+
+scorers:
+  - name: latency_p95
+    type: builtin.latency
+    tier: t1
+    config:
+      percentile: 95
+      threshold_ms: 2000
+
+  - name: error_rate
+    type: builtin.error_rate
+    tier: t1
+    config:
+      threshold_pct: 0.5
+
+testing:
+  report_format: markdown
+  output_dir: "./eval-reports/"
+  fail_on: t1
+  warn_on: t2
+  compare_to: latest

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "arceval"
+version = "0.1.0"
+description = "The orchestration layer for AI evaluation"
+license = "MIT"
+requires-python = ">=3.11"
+readme = "README.md"
+dependencies = [
+    "pydantic>=2.0",
+    "click>=8.0",
+    "pyyaml>=6.0",
+    "structlog>=24.0",
+    "opentelemetry-api>=1.20",
+    "opentelemetry-sdk>=1.20",
+    "jsonschema>=4.0",
+]
+
+[project.optional-dependencies]
+mlflow = ["mlflow[databricks]>=3.1"]
+langfuse = ["langfuse>=2.0"]
+deepeval = ["deepeval>=1.0"]
+ragas = ["ragas>=0.2"]
+otel = ["opentelemetry-exporter-otlp>=1.20"]
+delta = ["deltalake>=0.15"]
+all = ["arceval[mlflow,langfuse,deepeval,ragas,otel,delta]"]
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+
+[project.scripts]
+arceval = "arceval.cli.main:cli"
+
+[project.entry-points.pytest11]
+arceval = "arceval.testing.pytest_plugin"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
