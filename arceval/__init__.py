@@ -62,6 +62,18 @@ default_registry.register_scorer("mlflow.conversation_completeness", MLflowScore
 default_registry.register_scorer("mlflow.user_frustration", MLflowScorerAdapter)
 default_registry.register_scorer("custom", CustomScorer)
 
+from arceval.capture.mcp import MCPCapture
+from arceval.capture.fastapi import FastAPICapture
+from arceval.capture.langchain import LangChainCapture
+from arceval.capture.openai_wrapper import OpenAICapture
+from arceval.capture.manual import ManualCapture
+
+default_registry.register_capture("mcp", MCPCapture)
+default_registry.register_capture("fastapi", FastAPICapture)
+default_registry.register_capture("langchain", LangChainCapture)
+default_registry.register_capture("openai", OpenAICapture)
+default_registry.register_capture("manual", ManualCapture)
+
 __all__ = [
     "ArcEvalConfig",
     "AlertSink",
