@@ -24,7 +24,16 @@ from arceval.scorers.builtin.completeness import CompletenessScorer
 from arceval.scorers.builtin.freshness import FreshnessScorer
 from arceval.scorers.builtin.token_usage import TokenUsageScorer
 
+from arceval.backends.mlflow import MLflowBackend
+from arceval.backends.langfuse import LangfuseBackend
+from arceval.backends.otel import OTELBackend
+from arceval.backends.delta import DeltaBackend
+
 default_registry.register_backend("file", FileBackend)
+default_registry.register_backend("mlflow", MLflowBackend)
+default_registry.register_backend("langfuse", LangfuseBackend)
+default_registry.register_backend("otel", OTELBackend)
+default_registry.register_backend("delta", DeltaBackend)
 default_registry.register_scorer("builtin.latency", LatencyScorer)
 default_registry.register_scorer("builtin.error_rate", ErrorRateScorer)
 default_registry.register_scorer("builtin.schema", SchemaScorer)
